@@ -2,7 +2,7 @@
 
 {% block body %}
 	{% for post in posts %}
-		<a href="{% url 'post-update' post.id %}">{{ post.title }}</a>
+		<a href="{% url 'post-detail' post.id %}">{{ post.title }}</a>
 		| Updated: {{ post.date_updated }}
 		<br><br>
 	{% endfor %}
