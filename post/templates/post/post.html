@@ -5,6 +5,8 @@
 {% endblock head %}
 
 {% block body %}
+	<a href="{% url 'index' %}">Home </a> 
+	<br>
 	<strong>{{ post.title }}</strong>
 	<br>
 	{{ post.date_created }}
