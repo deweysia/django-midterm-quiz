@@ -1,0 +1,11 @@
+{% extends "post/base.html" %}
+
+{% block body %}
+	{% for post in posts %}
+		<a href="{% url 'post-update' post.id %}">{{ post.title }}</a>
+		| Updated: {{ post.date_updated }}
+		<br><br>
+	{% endfor %}
+	<br>
+	<a href="{% url 'post-create' %}">Create a new post</a>
+{% endblock body %}
