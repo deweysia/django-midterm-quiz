@@ -6,6 +6,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from .models import Post, Comment
 from .forms import CommentForm
+from django.urls import reverse
 
 # Create your views here.
 
@@ -45,11 +46,12 @@ class CommentCreateView(CreateView):
     fields = ['content']
 
     def form_valid(self, form):
-    	form.instance.post = self.request.post
+    	form.instance.post = Post.objects.get(pk=self.kwargs['post_id'])
     	return super().form_valid(form)
 
-
-
+    def get_success_url(self):
+    	return reverse('post-detail', kwargs={'pk': self.kwargs['post_id']})
+    	
 def comment(request, post_id):
 	post = Post.objects.get(id=post_id)
 	context = {}
